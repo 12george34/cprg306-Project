@@ -1,34 +1,35 @@
 @import "tailwindcss";
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+
+.header {
+  @apply absolute top-10;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+.main {
+  @apply dark:text-white;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
-body {
-  background: white;
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
-
-}
-
 
 .footer {
-  position: absolute;
-  bottom: 25px;
+  @apply dark:text-white absolute bottom-10;
+}
 
+
+.cart {
+  @apply text-white absolute top-10 right-10 w-10 h-10 border-2 rounded-full;
+}
+
+
+.container-cart {
+  @apply bg-black min-h-screen w-full flex flex-col items-center text-center;
+
+}
+
+.cart-title-text {
+  @apply text-[32px] text-white mt-10;
+}
+
+.checkout-title-text {
+  @apply text-[24px] text-white mt-10;
 }
