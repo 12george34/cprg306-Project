@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+
+
+.header {
+  @apply absolute top-10;
+}
+
+
+.main {
+  @apply dark:text-white;
+}
+
+.footer {
+  @apply dark:text-white absolute bottom-10;
+}
+
+
+.cart {
+  @apply text-white absolute top-10 right-10 w-10 h-10 border-2 rounded-full;
+}
+
+
+.container-cart {
+  @apply bg-black min-h-screen w-full flex flex-col items-center text-center;
+
+}
+
+.cart-title-text {
+  @apply text-[32px] text-white mt-10;
+}
+
+.checkout-title-text {
+  @apply text-[24px] text-white mt-10;
+}
