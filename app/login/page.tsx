@@ -13,7 +13,7 @@ export default function Login() {
   const router = useRouter();
   const supabase = createClient();
 
-  async function handleSignIn(event) {
+  async function handleSignIn(event: React.SubmitEvent) {
     // Prevent reloading page on submit
     event.preventDefault();
 
@@ -60,11 +60,7 @@ export default function Login() {
         {/* Display error */}
         <div>{error ? <p>{error}</p> : null}</div>
         {/* Submit button */}
-        <button
-          type="submit"
-          onClick={handleSignIn}
-          disabled={!email || !password}
-        >
+        <button type="submit" disabled={!email || !password}>
           Login
         </button>
       </form>
