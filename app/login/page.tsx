@@ -35,32 +35,47 @@ export default function Login() {
 
   return (
     <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSignIn}>
+      <header className="header">
+        <h1 className="text-5xl text-black dark:text-white">Login</h1>
+      </header>
+
+      <form
+        className="border rounded-lg mx-8 my-8 py-5 flex flex-col items-center gap-6"
+        onSubmit={handleSignIn}
+      >
         {/* Enter email */}
-        <div>
-          <label>Email</label>
+        <div className="flex">
+          <label className="w-24 text-left text-lg">Email: </label>
           <input
+            className="border rounded px-2"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
+
         {/* Enter password */}
-        <div>
-          <label>Password</label>
+        <div className="flex">
+          <label className="w-24 text-left text-lg">Password: </label>
           <input
+            className="border rounded px-2"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
+
         {/* Display error */}
-        <div>{error ? <p>{error}</p> : null}</div>
+        {error ? <div><p className="text-red-500">{error}</p></div> : null}
+
         {/* Submit button */}
-        <button type="submit" disabled={!email || !password}>
+        <button
+          className="border rounded px-4 py-1 text-xl active:scale-90"
+          type="submit"
+          disabled={!email || !password}
+        >
           Login
         </button>
       </form>

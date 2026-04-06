@@ -3,7 +3,6 @@
 import React from "react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import "./globals.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import router from "next/dist/shared/lib/router/router";
@@ -18,7 +17,7 @@ export default function Home() {
       </button>
 
       <header className="header">
-        <h1 className="text-[50px] text-black dark:text-white">
+        <h1 className="text-5xl text-black dark:text-white">
           Welcome to Haylo
         </h1>
       </header>
@@ -32,16 +31,6 @@ export default function Home() {
         <p>Buy 2, Get a free third kids book</p>
         <p>Horror</p>
       </main>
-
-      <footer className="footer">
-        <p>Rewards</p>
-        <p>Careers</p>
-        <p>Give Us Feedback</p>
-        <p>About Haylo</p>
-        <p>Shipping and Returns</p>
-        <p>Product Recalls</p>
-        <p>Frequently Asked Questions</p>
-      </footer>
     </div>
   );
 }
