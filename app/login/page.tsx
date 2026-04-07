@@ -36,7 +36,7 @@ export default function Login() {
   return (
     <div>
       <header className="header">
-        <h1 className="text-5xl text-black dark:text-white">Login</h1>
+        <h1 className="text-5xl dark:text-white">Login</h1>
       </header>
 
       <form
@@ -68,7 +68,11 @@ export default function Login() {
         </div>
 
         {/* Display error */}
-        {error ? <div><p className="text-red-500">{error}</p></div> : null}
+        {error ? (
+          <div>
+            <p className="text-red-500">{error}</p>
+          </div>
+        ) : null}
 
         {/* Submit button */}
         <button

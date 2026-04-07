@@ -10,7 +10,7 @@ export default function Book() {
       <div className="flex gap-5">
         <img src={book.coverURL} width="250" />
         <div>
-          <h1>{book.title}</h1>
+          <h1 className="text-4xl">{book.title}</h1>
           <h2>{book.author}</h2>
           <p>Published: {book.pubDate}</p>
           <p>ISBN: {book.isbn}</p>

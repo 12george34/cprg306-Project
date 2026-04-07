@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header>
-      <nav className="flex flex-1 items-center">
+      <nav className="text-[#D8D78F] bg-[#aa5042] py-2 flex flex-1 items-center">
         <div className="flex justify-start">
           <Link href="/">Home</Link>
         </div>

@@ -1,29 +1,29 @@
 @import "tailwindcss";
 
-
+/* 
+Colour Palette:
+(see https://coolors.co/4f3130-753742-aa5042-d8bd8a-d8d78f)
+- Espresso #4F3130
+- Wine Plum #753742
+- Terracotta Clay #AA5042
+- Soft Fawn #D8BD8A
+- Light Gold #D8D78F
+*/
 
 .header {
-  @apply w-full py-2 text-center bg-white dark:bg-black;
+  @apply w-full pb-5 text-center text-[#D8D78F] bg-[#aa5042] dark:bg-black;
 }
-
 
 .main {
-  @apply dark:text-white;
+  @apply bg-[#d8bd8a] dark:text-white;
 }
-
-.footer {
-  @apply dark:text-white bottom-10;
-}
-
 
 .cart {
   @apply text-white absolute top-10 right-10 w-10 h-10 border-2 rounded-full;
 }
 
-
 .container-cart {
   @apply bg-black min-h-screen w-full flex flex-col items-center text-center;
-
 }
 
 .cart-title-text {
