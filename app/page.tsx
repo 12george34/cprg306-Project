@@ -10,8 +10,8 @@ import router from "next/dist/shared/lib/router/router";
 function BookRow({ title, genre }: { title: string, genre: string }) {
   const [books, setBooks] = useState<any[]>([]);
   const router = useRouter();
- 
- 
+
+
   useEffect(() => {
     fetch(`/api/books?genre=${genre}`)
       .then((res) => res.json())
@@ -54,14 +54,12 @@ export default function Home() {
         </h1>
       </header>
 
-      <main className="main">
-        <p>New This Week</p>
-        <p>Popular</p>
-        <p>Recently added</p>
-        <p>Most Anticipated</p>
-        <p>Staff Picks</p>
-        <p>Buy 2, Get a free third kids book</p>
-        <p>Horror</p>
+      <main className="w-full">
+        <BookRow title="Popular" genre="Popular" />
+        <BookRow title="Recently Added" genre="Recently Added" />
+        <BookRow title="Most Anticipated" genre="Most Anticipated" />
+        <BookRow title="Staff Picks" genre="Staff Picks" />
+        <BookRow title="Horror" genre="Horror" />
       </main>
     </div>
   );

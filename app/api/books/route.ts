@@ -7,6 +7,10 @@ export async function GET(request: Request) {
 
     const { data, error } = await supabase.from('books').select('*').eq('genre', genre)
 
+    console.log('genre:', genre)
+    console.log('data:', data)
+    console.log('error:', error)
+
     if (error) return Response.json({ error: error.message }, { status: 500 })
     return Response.json(data)
 }
