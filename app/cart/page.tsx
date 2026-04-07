@@ -53,12 +53,18 @@ export default function cart() {
               <p className='text-gray-400 text-sm'>{item.author}</p>
               <p className='text-green-600'>${item.price.toFixed(2)}</p>
             </div>
+          </div>
         ))}
 
-          </main>
+        <div className='text-white text-xl mt-4 mb-4'>
+          Total: ${total.toFixed(2)}
+        </div>
+
+        <button onClick={handleCheckout} disabled={loading} className='bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 disabled:bg-gray-500'>
+          {loading ? "loading..." : "Checkout"}
+        </button>
+      </main>
 
     </div>
   )
 }
-
-// text-[24px] text-white mt-10
