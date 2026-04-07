@@ -11,7 +11,6 @@ function BookRow({ title, genre }: { title: string, genre: string }) {
   const [books, setBooks] = useState<any[]>([]);
   const router = useRouter();
  
- 
   useEffect(() => {
     fetch(`/api/books?genre=${genre}`)
       .then((res) => res.json())

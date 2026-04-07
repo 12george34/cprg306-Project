@@ -7,20 +7,19 @@ export default function Book() {
 
   return (
     <main>
-      <div className="flex gap-5">
+      <div className="mt-5 flex justify-center gap-8">
         <img src={book.coverURL} width="250" />
-        <div>
+        <div className="flex flex-col gap-3">
           <h1 className="text-4xl">{book.title}</h1>
-          <h2>{book.author}</h2>
-          <p>Published: {book.pubDate}</p>
-          <p>ISBN: {book.isbn}</p>
-          <p>Price: {book.price}</p>
-          <h2>{book.stock > 0 ? <p>Add to Cart</p> : <p>Out of stock</p>}</h2>
+          <h2 className="text-2xl">{book.author}, {book.pubDate}</h2>
+          <p className="text-2xl text-right">${book.price}</p>
+          <h2 className="text-xl text-right">{book.stock > 0 ? <p>Add to Cart</p> : <p>Out of stock</p>}</h2>
         </div>
       </div>
       <div>
-        <h2>Summary:</h2>
+        <h2 className="text-2xl">Summary:</h2>
         <p>Summary text</p>
+        <p>ISBN: {book.isbn}</p>
       </div>
     </main>
   );
