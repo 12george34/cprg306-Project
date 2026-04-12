@@ -5,12 +5,10 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import router from "next/dist/shared/lib/router/router";
 
-function BookRow({ title, genre }: { title: string, genre: string }) {
+function BookRow({ title, genre, sortBy }: { title: string; genre: string; sortBy: string }) {
   const [books, setBooks] = useState<any[]>([]);
   const router = useRouter();
-
 
   useEffect(() => {
     fetch(`/api/books?genre=${genre}`)
@@ -18,13 +16,23 @@ function BookRow({ title, genre }: { title: string, genre: string }) {
       .then((data) => setBooks(data));
   }, [genre]);
 
+  const sorted = [...books].sort((a, b) => {
+    if (sortBy === "Price: Low to High") return a.price - b.price;
+    if (sortBy === "Price: High to Low") return b.price - a.price;
+    if (sortBy === "Title: A-Z") return a.title.localeCompare(b.title);
+    return 0;
+  });
+
   return (
     <section className="w-full px-10 my-6">
       <h2 className="text-2xl font-bold text-black dark:text-white mb-4">{title}</h2>
       <div className="flex gap-4 overflow-x-auto pb-2">
-        {books.map((book: any) => (
-          <div key={book.id} className="flex-shrink-0 w-32 flex flex-col items-center cursor-pointer"
-            onClick={() => router.push(`/book?id=${book.id}`)}>
+        {sorted.map((book: any) => (
+          <div
+            key={book.id}
+            className="flex-shrink-0 w-32 flex flex-col items-center cursor-pointer"
+            onClick={() => router.push(`/book?id=${book.id}`)}
+          >
             <img
               src={book.cover_url}
               alt={book.title}
@@ -41,6 +49,7 @@ function BookRow({ title, genre }: { title: string, genre: string }) {
 
 export default function Home() {
   const router = useRouter();
+  const [sortBy, setSortBy] = useState("Default");
 
   return (
     <div className="flex flex-col flex-1 items-center font-sans dark:bg-black">
@@ -49,17 +58,29 @@ export default function Home() {
       </button>
 
       <header className="header">
-        <h1 className="text-5xl dark:text-white">
-          Welcome to Haylo
-        </h1>
+        <h1 className="text-5xl dark:text-white">Welcome to Haylo</h1>
       </header>
 
+      {/* Sort dropdown */}
+      <div className="w-full px-10 mt-4">
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="border rounded px-3 py-2 dark:bg-gray-800 dark:text-white"
+        >
+          <option>Default</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Title: A-Z</option>
+        </select>
+      </div>
+
       <main className="w-full">
-        <BookRow title="Popular" genre="Popular" />
-        <BookRow title="Recently Added" genre="Recently Added" />
-        <BookRow title="Most Anticipated" genre="Most Anticipated" />
-        <BookRow title="Staff Picks" genre="Staff Picks" />
-        <BookRow title="Horror" genre="Horror" />
+        <BookRow title="Popular" genre="Popular" sortBy={sortBy} />
+        <BookRow title="Recently Added" genre="Recently Added" sortBy={sortBy} />
+        <BookRow title="Most Anticipated" genre="Most Anticipated" sortBy={sortBy} />
+        <BookRow title="Staff Picks" genre="Staff Picks" sortBy={sortBy} />
+        <BookRow title="Horror" genre="Horror" sortBy={sortBy} />
       </main>
     </div>
   );

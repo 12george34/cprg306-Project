@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 
 interface Book {
   id: string;
@@ -12,28 +12,18 @@ interface Book {
   stock: number;
 }
 
-export default function Book() {
-
-
+function BookContent() {
   const [book, setBook] = useState<Book | null>(null);
+  const [added, setAdded] = useState(false);
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
-  const [added, setAdded] = useState(false);
 
-
-  // Get book data from database
   useEffect(() => {
-    console.log("id:", id);
     if (!id || id === "undefined") return;
-
     fetch(`/api/books/${id}`)
       .then((r) => r.json())
-      .then((data) => {
-        console.log("Received data:", data);
-        setBook(data);
-      });
-  }, [id]); // re-fetches if id changes
-
+      .then((data) => setBook(data));
+  }, [id]);
 
   function handleAddToCart() {
     if (!book) return;
@@ -50,15 +40,7 @@ export default function Book() {
     setAdded(true);
   }
 
-
-
-
-
   if (!book) return <div>Loading...</div>;
-
-
-
-
 
   return (
     <main>
@@ -93,5 +75,13 @@ export default function Book() {
         <p>Summary text</p>
       </div>
     </main>
+  );
+}
+
+export default function Book() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BookContent />
+    </Suspense>
   );
 }
