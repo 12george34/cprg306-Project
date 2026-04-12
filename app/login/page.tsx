@@ -13,7 +13,7 @@ export default function Login() {
   const router = useRouter();
   const supabase = createClient();
 
-  async function handleSignIn(event: React.SubmitEvent) {
+  async function handleSignIn(event: React.SyntheticEvent) {
     // Prevent reloading page on submit
     event.preventDefault();
 
@@ -82,6 +82,17 @@ export default function Login() {
         >
           Login
         </button>
+
+        {/* Sign-Up Link */}
+        <div className="flex flex-col items-center">
+          <p className="my-3">Don't have an account?</p>
+          <Link
+            href="/signup"
+            className="border rounded px-4 py-1 text-xl active:scale-90 "
+          >
+            Sign Up
+          </Link>
+        </div>
       </form>
     </div>
   );
