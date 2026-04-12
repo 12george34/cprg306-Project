@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 interface Book {
   title: string;
   author: string;
-  coverURL: string;
+  cover_url: string;
   pubDate: string;
   price: number;
   stock: number;
@@ -41,7 +41,7 @@ export default function Book() {
       <div className="mt-5 flex justify-center gap-8">
         <div className="max-h-[500px] max-w-[300px] w-full">
           <img
-            src={book.coverURL}
+            src={book.cover_url}
             alt={`${book.title} cover`}
             className="h-full w-full object-contain"
           />
