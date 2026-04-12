@@ -29,7 +29,7 @@ export default function Login() {
     if (response.error) {
       setError(response.error.message);
     } else {
-      router.push("/page");
+      router.push("/");
     }
   }
 
