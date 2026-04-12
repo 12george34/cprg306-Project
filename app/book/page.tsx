@@ -60,7 +60,6 @@ export default function Book() {
       <div>
         <h2 className="text-2xl">Summary:</h2>
         <p>Summary text</p>
-        <p>ISBN: {book.isbn}</p>
       </div>
     </main>
   );
