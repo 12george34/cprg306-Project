@@ -1,25 +1,25 @@
 "use client";
 
-import { placeholderBook } from "@/lib/placeholder-data";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
 interface Book {
+  id: string;
   title: string;
   author: string;
   cover_url: string;
-  pubDate: string;
   price: number;
   stock: number;
-  isbn: string;
 }
 
 export default function Book() {
-  // const book = placeholderBook;
+
 
   const [book, setBook] = useState<Book | null>(null);
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
+  const [added, setAdded] = useState(false);
+
 
   // Get book data from database
   useEffect(() => {
@@ -34,7 +34,31 @@ export default function Book() {
       });
   }, [id]); // re-fetches if id changes
 
+
+  function handleAddToCart() {
+    if (!book) return;
+
+    const existing = localStorage.getItem("cart");
+    const cart = existing ? JSON.parse(existing) : [];
+
+    const alreadyIn = cart.find((item: any) => item.id === book.id);
+    if (!alreadyIn) {
+      cart.push({ ...book, qty: 1 });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    setAdded(true);
+  }
+
+
+
+
+
   if (!book) return <div>Loading...</div>;
+
+
+
+
 
   return (
     <main>
@@ -48,12 +72,19 @@ export default function Book() {
         </div>
         <div className="flex flex-col gap-3">
           <h1 className="text-4xl">{book.title}</h1>
-          <h2 className="text-2xl">
-            {book.author}, {book.pubDate}
-          </h2>
+          <h2 className="text-2xl">{book.author}</h2>
           <p className="text-2xl text-right">${book.price}</p>
           <h2 className="text-xl text-right">
-            {book.stock > 0 ? <p>Add to Cart</p> : <p>Out of stock</p>}
+            {book.stock > 0 ? (
+              <button
+                onClick={handleAddToCart}
+                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+              >
+                {added ? "Added to Cart ✓" : "Add to Cart"}
+              </button>
+            ) : (
+              <p>Out of stock</p>
+            )}
           </h2>
         </div>
       </div>
