@@ -70,10 +70,6 @@ function BookContent() {
           </h2>
         </div>
       </div>
-      <div>
-        <h2 className="text-2xl">Summary:</h2>
-        <p>Summary text</p>
-      </div>
     </main>
   );
 }

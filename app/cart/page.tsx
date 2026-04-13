@@ -55,7 +55,7 @@ export default function cart() {
   return (
     <div className='bg-black min-h-screen w-full flex flex-col items-center text-center'>
       <header>
-        <h1 className='text-[32px] text-white mt-10'>Shopping Cart</h1>
+        <h1 className='text-[32px] text-white mt-10'>My Bag</h1>
       </header>
 
       <main className='w-full px-10 mt-6'>

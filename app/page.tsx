@@ -52,13 +52,13 @@ export default function Home() {
   const [sortBy, setSortBy] = useState("Default");
 
   return (
-    <div className="flex flex-col flex-1 items-center font-sans dark:bg-black">
+    <div className="flex flex-col flex-1 items-center font-sans">
       <button onClick={() => router.push("../cart")}>
         <FontAwesomeIcon icon={faShoppingCart} className="cart" />
       </button>
 
       <header className="header">
-        <h1 className="text-5xl dark:text-white">Welcome to Haylo</h1>
+        <h1 className="text-5xl text-white mt-4">Welcome to Haylo</h1>
       </header>
 
       {/* Sort dropdown */}
