@@ -19,5 +19,6 @@ Colour Palette:
 }
 
 .cart {
-  @apply text-white absolute top-10 right-10 w-10 h-10 mt-5;
+  @apply text-white absolute top-10 right-10 w-10 h-10 mt-4;
+
 }
