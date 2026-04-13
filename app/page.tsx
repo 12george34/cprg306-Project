@@ -38,8 +38,8 @@ function BookRow({ title, genre, sortBy }: { title: string; genre: string; sortB
               alt={book.title}
               className="w-28 h-40 object-cover rounded shadow"
             />
-            <p className="text-xs text-center mt-1 dark:text-white">{book.title}</p>
-            <p className="text-xs text-center text-gray-500">{book.author}</p>
+            <p className="text-xs text-center mt-1 dark:text-black">{book.title}</p>
+            {/* <p className="text-xs text-center text-gray-500">{book.author}</p> */}
           </div>
         ))}
       </div>
@@ -58,15 +58,15 @@ export default function Home() {
       </button>
 
       <header className="header">
-        <h1 className="text-5xl text-white mt-4">Welcome to Haylo</h1>
+        <h1 className="text-5xl mt-4 ">Welcome to Haylo</h1>
       </header>
 
       {/* Sort dropdown */}
-      <div className="w-full px-10 mt-4">
+      <div className="w-full px-10 mt-4" >
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
-          className="border rounded px-3 py-2 dark:bg-gray-800 dark:text-white"
+          className="rounded px-2 py-1 dark:text-white bg-[#AA5042]"
         >
           <option>Default</option>
           <option>Price: Low to High</option>

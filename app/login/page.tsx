@@ -36,7 +36,7 @@ export default function Login() {
   return (
     <div>
       <header className="header">
-        <h1 className="text-5xl dark:text-white">Login</h1>
+        <h1 className="text-5xl dark:text-black text-center mt-5">Login</h1>
       </header>
 
       <form

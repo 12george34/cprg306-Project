@@ -15,7 +15,7 @@ Colour Palette:
 } */
 
 .main {
-  @apply bg-[#d8bd8a] dark:text-white;
+  @apply bg-[#d8bd8a] dark:text-black;
 }
 
 .cart {

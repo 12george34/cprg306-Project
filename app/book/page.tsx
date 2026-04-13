@@ -52,11 +52,11 @@ function BookContent() {
             className="h-full w-full object-contain"
           />
         </div>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-5">
           <h1 className="text-4xl">{book.title}</h1>
           <h2 className="text-2xl">{book.author}</h2>
-          <p className="text-2xl text-right">${book.price}</p>
-          <h2 className="text-xl text-right">
+          <p className="text-2xl text-left">${book.price}</p>
+          <h2 className="text-xl text-left">
             {book.stock > 0 ? (
               <button
                 onClick={handleAddToCart}
