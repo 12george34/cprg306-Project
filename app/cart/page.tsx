@@ -53,18 +53,18 @@ export default function cart() {
 
 
   return (
-    <div className='bg-black min-h-screen w-full flex flex-col items-center text-center'>
+    <div className='min-h-screen w-full flex flex-col items-center text-center'>
       <header>
-        <h1 className='text-[32px] text-white mt-10'>My Bag</h1>
+        <h1 className='text-[32px] text-black mt-10'>My Bag</h1>
       </header>
 
       <main className='w-full px-10 mt-6'>
         {cartItems.length === 0 ? (
-          <p className='text-white mt-10'>Your cart is empty.</p>
+          <p className='text-black mt-10'>Your cart is empty.</p>
         ) : (
           <>
             {cartItems.map(item => (
-              <div key={item.id} className='flex items-center bg-gray-800 rounded-lg p-4 mb-4'>
+              <div key={item.id} className='flex items-center bg-[#aa5042] rounded-lg p-4 mb-4 max-w-xl justify-center mx-auto'>
                 <img src={item.cover_url} alt={item.title} className='w-16 h-24 object-cover rounded' />
                 <div className='flex-1 text-left ml-4'>
                   <p className='font-bold text-white'>{item.title}</p>
@@ -80,8 +80,8 @@ export default function cart() {
               </div>
             ))}
 
-            <div className='text-white text-xl mt-4 mb-4'>
-              Total: ${total.toFixed(2)}
+            <div className='text-black text-xl mt-4 mb-4'>
+              Total: <span className='text-green-700'>${total.toFixed(2)}</span>
             </div>
 
             <button onClick={handleCheckout} disabled={loading} className='bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 disabled:bg-gray-500'>
